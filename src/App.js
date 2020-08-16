@@ -22,8 +22,8 @@ class App extends React.Component {
   render() {
     let { customersListData, showModal, selectedCustomer } = this.state
      return (
-       <div>
-         <h2 style={{textAlign: 'center'}}>Customer List</h2>
+       <React.Fragment>
+         <h2 style={{textAlign: 'center', letterSpacing: '1px'}}>Customer's List</h2>
          <CustomersList selectCustomer={this.selectCustomer} customersData={customersListData}></CustomersList>
         {
            showModal ?  <SelectedCustomer selCust={find(customersListData, {id: selectedCustomer})} onClose={() => {
@@ -33,7 +33,7 @@ class App extends React.Component {
              })
            }}></SelectedCustomer> : null
         }
-       </div>
+       </React.Fragment>
      )
   }
 }

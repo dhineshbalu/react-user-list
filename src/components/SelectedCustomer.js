@@ -62,13 +62,13 @@ export default function SelectedCustomer({ selCust, onClose }) {
          let dates = []
          if (selDate) {
             dates = selCust.activity_periods.filter((l) => {
-                let date =  new Date(l.start_time.split(' ')[0] + ' ' + l.start_time.split(' ')[1] + ' ' + l.start_time.split(' ')[2])
-                 return date.getDay() == selDate.getDay() && date.getMonth() == selDate.getMonth() && date.getYear() == selDate.getYear()
+                let stTime =  new Date(l.start_time.split(' ')[0] + ' ' + l.start_time.split(' ')[1] + ' ' + l.start_time.split(' ')[2])
+                let endTime = new Date(l.end_time.split(' ')[0] + ' ' + l.end_time.split(' ')[1] + ' ' + l.end_time.split(' ')[2])
+                 return ((stTime.getDay() == selDate.getDay() && stTime.getMonth() == selDate.getMonth() && stTime.getYear() == selDate.getYear()) ||(endTime.getDay() == selDate.getDay() && endTime.getMonth() == selDate.getMonth() && endTime.getYear() == selDate.getYear()))
              })
          } else {
            dates = selCust.activity_periods
          }
-
         setDateList(dates)
      }
   }
